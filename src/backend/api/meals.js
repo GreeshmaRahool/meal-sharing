@@ -24,7 +24,11 @@ router.get("/", async (request, response) => {
 
     //availableReservations
     else if (request.query.availableReservations === "true") {
+      let coalesceres = knex.raw(
+        "coalesce(sum(reservation.number_of_guests), 0) as total_reservation"
+      );
       const availableReservations = await knex("meal")
+      //  let coalesceres =
         .select("meal.id", "max_reservations", coalesceres)
         .leftJoin("reservation", "reservation.meal_id", "meal.id")
         .groupBy("meal.id")
@@ -42,7 +46,7 @@ router.get("/", async (request, response) => {
         `%${queryTitle}%`
       );
 
-      response.send(mealWithtitleSearch);
+      response.json(mealWithtitleSearch);
     }
 
     //createdAfter
