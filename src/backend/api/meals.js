@@ -1,14 +1,25 @@
+const { raw } = require("body-parser");
 const express = require("express");
 const router = express.Router();
 const knex = require("../database");
 
 router.get("/", async (request, response) => {
   try {
-    // knex syntax for selecting things. Look up the documentation for knex for further info
-    // const titles = await knex("meals").select("title");
+    //limit+maxPrice
+    if (request.query.maxPrice && request.query.limit) {
+      const queryMaxPrice = parseInt(request.query.maxPrice);
+      const queryLimit = parseInt(request.query.limit);
+      const mealsWithPrice = await knex("meal")
+        .where("price", "<", queryMaxPrice)
+        .limit(queryLimit);
+      response.json(mealsWithPrice);
 
+      if (isNaN(queryMaxPrice) && isNaN(queryLimit)) {
+        return response.status(400).send("Enter valid data");
+      }
+    }
     //maxPrice
-    if (request.query.maxPrice) {
+    else if (request.query.maxPrice) {
       const queryMaxPrice = parseInt(request.query.maxPrice);
       const mealsWithPrice = await knex("meal").where(
         "price",
@@ -23,17 +34,19 @@ router.get("/", async (request, response) => {
     }
 
     //availableReservations
-    else if (request.query.availableReservations === "true") {
-      let coalesceres = knex.raw(
-        "coalesce(sum(reservation.number_of_guests), 0) as total_reservation"
-      );
-      const availableReservations = await knex("meal")
-      //  let coalesceres =
-        .select("meal.id", "max_reservations", coalesceres)
-        .leftJoin("reservation", "reservation.meal_id", "meal.id")
-        .groupBy("meal.id")
-        .having("max_reservations", ">", "total_reservation");
-      response.json(availableReservations);
+    else if ("availableReservations" in request.query) {
+      if (request.query.availableReservations === "true") {
+        const availableReservations = await knex
+          .raw(
+            `select meal.id, meal.title, meal.max_reservations, coalesce(SUM(reservation.no_of_guests), 0) as total_reservations from meal
+          left join reservation on meal.id = reservation.meal_id
+          group by meal.id
+          having
+          meal.max_reservations > total_reservations`
+          )
+          .then((result) => result[0]);
+        response.json(availableReservations);
+      }
     }
 
     //title
@@ -76,20 +89,9 @@ router.get("/", async (request, response) => {
 
       const mealsWithLimit = await knex("meal").limit(queryLimit);
       response.json(mealsWithLimit);
-    }
-
-    //limit+maxPrice
-    else if (request.query.maxPrice && request.query.limit) {
-      const queryMaxPrice = parseInt(request.query.maxPrice);
-      const queryLimit = parseInt(request.query.limit);
-      const mealsWithPrice = await knex("meal")
-        .limit(queryLimit)
-        .where("price", "<", queryMaxPrice);
-      response.json(mealsWithPrice);
-
-      if (isNaN(queryMaxPrice) && isNaN(queryMaxLimit)) {
-        return response.status(400).send("Enter valid data");
-      }
+    } else {
+      const allMeals = await knex("meal");
+      response.json(allMeals);
     }
   } catch (error) {
     response.send(404).send("No data found");
