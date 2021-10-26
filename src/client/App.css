@@ -110,6 +110,9 @@ h3 {
   padding-right: 140px;
   margin: 30px;
 }
+.display-meal ul li {
+margin-bottom: 2%;
+}
 .meal-image {
   width: 240px;
   height: 240px;
