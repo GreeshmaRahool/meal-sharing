@@ -5,7 +5,7 @@ const Displaymeal = ({ meal }) => {
     return (
         <div className="load-mealImage">
             <LoadImage meal={meal}/>
-            {meal.title}
+            {meal.title}<br/><br/>
         </div>
          
     )
