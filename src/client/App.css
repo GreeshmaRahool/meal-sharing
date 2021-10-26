@@ -109,9 +109,10 @@ h3 {
   justify-content: space-evenly;
   padding-right: 140px;
   margin: 30px;
+  
 }
 .display-meal ul li {
-margin-bottom: 2%;
+  margin-bottom: 60px;
 }
 .meal-image {
   width: 240px;
