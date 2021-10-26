@@ -1,12 +1,12 @@
 import React from "react";
-import logo from "../assets/images/meals-logo.png";
+import logo from "../assets/images/Logo.png";
 import { BrowserRouter as Switch, Link, Router, Route } from "react-router-dom";
 
 const Navigation = () => {
   return (
-    <div>
+    <div className="nav-logo">
       <img className="meal-logo" src={logo} alt="logo" />
-      <div>
+      <div className="nav">
         <ul>
           <Link to = "/">
             <li>Home</li>
@@ -22,7 +22,9 @@ const Navigation = () => {
           </Link>
         </ul>
       </div>
+      
     </div>
+    
   );
 };
 export default Navigation;

@@ -1,4 +1,5 @@
 import React from "react";
+import bgImageAbout from "../assets/images/BG1.png";
 const Aboutus = () => {
   return (
     <div>
@@ -9,7 +10,9 @@ const Aboutus = () => {
           the world with other curious food lovers.
         </p>
       </section>
-
+      <div>
+      <img src={bgImageAbout} alt="about-image" className = "image-about" />;
+    </div>
       <section>
         <h4>We are the leaders in social dining</h4>
         <p>
@@ -24,6 +27,10 @@ const Aboutus = () => {
           tours and cooking classes with local hosts.
         </p>
       </section>
+      <footer className="footer">
+        <p className="para-footer">The gift of an unforgettable experience</p>
+        <p className="createdby">Share The Meal @2021</p>
+      </footer>
     </div>
   );
 };

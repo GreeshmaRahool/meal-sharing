@@ -8,11 +8,12 @@ export default function AddMeal() {
   // const [title, setTitle] = useState("");
   // const [description, setDescription] = useState("");
   // const [location, setLocation] = useState("");
-  const [when, setWhen] = useState();
+ 
   // const [maxReservation, setmaxReservation] = useState("");
   // const [price, setPrice] = useState("");
   const [createdDate, setCreatedDate] = useState();
   const date = new Date().toISOString().substring(0, 10);
+  const [when, setWhen] = useState(new Date());
 
   const initialValues = {
     title: "",
@@ -48,6 +49,8 @@ export default function AddMeal() {
     console.log(response)
     if (response) {
       alert('Meal added successfully')
+      setValues(initialValues);
+      setWhen("");
     }
     else {
       alert('Something went wrong!')
@@ -56,9 +59,11 @@ export default function AddMeal() {
   
 
   return (
-    <div>
+    <div className="addmealcontainer">
+      <h1>Add a meal</h1>
       <label>Title</label>
       <input
+        className="input"
         type="text"
         value={values.title}
         name="title"
@@ -68,6 +73,7 @@ export default function AddMeal() {
 
       <label>Description</label>
       <input
+        className="input"
         type="text"
         value={values.description}
         name="description"
@@ -77,24 +83,16 @@ export default function AddMeal() {
 
       <label>Location</label>
       <input
+        className="input"
         type="text"
         value={values.location}
         name="location"
         onChange={handleInputChange}
       />
       <br />
-
-      <label>When</label>
-      <DatePicker
-        className="date-picker"
-        dateFormat="yyyy-MM-dd"
-        selected={when}
-        onChange={(date) => setWhen(date)}
-        minDate={new Date()}
-      />
-
       <label>maximum reservations</label>
       <input
+        className="input"
         type="number"
         value={values.maxReservation}
         name="maxReservation"
@@ -104,13 +102,22 @@ export default function AddMeal() {
 
       <label>Price</label>
       <input
+        className="input"
         type="number"
         value={values.price}
         name="price"
         onChange={handleInputChange}
       />
       <br />
-      <button type="submit" onClick={handleAddMeal}>Add meal</button>
+      <label>When</label>
+      <DatePicker
+        className="date-picker"
+        dateFormat="yyyy-MM-dd"
+        selected={when}
+        onChange={(date) => setWhen(date)}
+        minDate={new Date()}
+      /><br/><br/>
+      <button className="submitbutton" type="submit" onClick={handleAddMeal}>Add meal</button>
     </div>
   );
 }

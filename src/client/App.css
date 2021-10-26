@@ -1,9 +1,225 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
-.meal-logo{
-    width:13em;
-    height: 200px;
-    border: 5px solid rgb(255, 255, 255) ;
-    border-radius: 10px;
-  }
+.meal-logo {
+  width: 4em;
+  height: 4em;
+  border: 5px solid rgb(255, 255, 255);
+  border-radius: 10px;
+}
+.bg-cover {
+  background-size: cover;
+
+  width: 100%;
+  height: 100%;
+}
+
+.nav ul {
+  width: 500px;
+  display: flex;
+  justify-content: space-evenly;
+  margin-left: 600px;
+  margin-top: 30px;
+}
+.nav ul li {
+  color: rgb(0, 0, 0);
+}
+.nav-logo {
+  display: flex;
+}
+h1 {
+  padding-top: 8px;
+  text-align: center;
+}
+h3 {
+  padding-top: 130px;
+  text-align: left;
+  font-style: italic;
+  font-weight: lighter;
+  font-family: monospace;
+  margin-left: 5px;
+}
+.text-fontcolor {
+  color: rgb(255, 255, 255);
+}
+
+.search-meal {
+  float: right;
+  width: 500px;
+  height: 50px;
+}
+.search-container {
+  margin-top: 10px;
+  /* border: 2px solid rgb(216, 233, 68); */
+  width: 1200px;
+  height: 270px;
+}
+.header {
+  height: 80px;
+  margin-top: -25px;
+  /* border: 2px solid rgb(27, 7, 209); */
+}
+.footer {
+  height: 50px;
+  color: black;
+  margin-top: 200px;
+  font-style: oblique;
+  /* border: 2px solid rgb(226, 152, 152); */
+}
+.para-footer {
+  float: left;
+  margin-left: 20px;
+  font-weight: normal;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: medium;
+  color: black;
+}
+.createdby {
+  float: right;
+  margin-right: 20px;
+  font-weight: normal;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: medium;
+  color: black;
+}
+/*About*/
+.image-about {
+  width: 50%;
+  height: 50%;
+  margin-left: 20px;
+}
+/*meals*/
+.display-meal {
+  background-color: hsl(200, 4%, 15%);
+}
+.load-mealImage {
+  width: 250px;
+  height: 250px;
+  margin: 10px;
+  margin-bottom: 30px;
+  color: white;
+}
+.display-meal ul {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding-right: 140px;
+  margin: 30px;
+}
+.meal-image {
+  width: 240px;
+  height: 240px;
+}
+/*MealWithId*/
+.mealwithid-container {
+  margin: 10px;
+  height: 500px;
+  align-content: center;
+  text-align: center;
+  background-color: black;
+  color: whitesmoke;
+  /* border: solid 2px red; */
+}
+.button-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content:center;
+  width: 500px;
+  height: 80px;
+  margin-left: 400px;
+
+  
+}
+.button-reservtn{
+  margin-top: 10px;
+width: 200px;
+height: 50px;
+background-color: rgb(100, 12, 100);
+
+}
+.button-review{
+  margin-top : 10px;
+  margin-left : 30px;
+  width: 200px;
+  height: 50px;
+  background-color: rgb(100, 12, 100);
+}
+.meal-image{
+  margin-top: 20px;
+}
+.container{
+  /* border: solid 2px red;
+  margin-left: 800px;
+  */
+  /* width:300px; */
+  width: 30%;
+  height: 60%;
+  background-color: rgb(63, 6, 44);
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom:450px;
+  margin-left:790px ;
+}
+.submitbutton{
+  font-weight: bolder;
+  width: 120px;
+  height: 30px;
+  color: black;
+  background-color: rgb(197, 165, 189);
+  margin-bottom: 2%;
+}
+.addmealcontainer{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  background-color: rgb(63, 6, 44);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: whitesmoke;
+
+  border: 2px solid red;
+}
+.input{
+  height: 30px;
+  width: 320px;
+ 
+}
+.date-picker{
+margin-left: 37%;
+width: 320px;
+height: 40px;
+}
+.searchmeal-container {
+  width: 90%;
+  height: 100%;
+  display: flex;
+  position: fixed;
+  font-weight: bolder;
+  margin-right: 20px;
+ 
+}
+.searchmeal-container{
+  color: blue;
+}
+.emptymeal{
+  margin-left: 700px;
+  font-weight: bolder;
+  font-size: large;
+}
+.emptyres{
+float: right;
+}
+.forminputs{
+  width: 280px;
+  height: 30px;
+}

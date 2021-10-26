@@ -2,17 +2,21 @@ import React from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useState, useEffect } from "react";
+import postData from "./postData";
+import Meals from "./Meals";
 
-export default function AddReservation({ mealId, array }) {
+export default function AddReservation(reservationId) {
+  const mealId = (Object.values(reservationId))[0]
+  const initialValues = {  
+    contact_phonenumber: "",
+    contact_name: "",
+     contact_email: "",
+     no_of_guests: "",
+  };
   const [values, setValues] = useState(initialValues);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-  const initialValues = {
-    contact_phonenumber: "",
-    contact_name: "",
-    contact_email: "",
-    no_of_guests: "",
-  };
+  
   const date = new Date().toISOString().substring(0, 10);
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -22,67 +26,66 @@ export default function AddReservation({ mealId, array }) {
     });
   };
   const handleAddReservation = (e) => {
-    const newreservation = {
+    const newReservation = {
       meal_id: mealId,
-      contact_name: name,
-      contact_phonenumber: phoneNumber,
-      contact_email: email,
-      no_of_guests: no_of_guests,
-
+      contact_name: values.contact_name,
+      contact_phonenumber: values.phoneNumber,
+      contact_email: values.email,
+      no_of_guests: values.no_of_guests,
       created_date: date,
     };
-    const response = postData("/api/reservations", newMeal);
+    console.log(newReservation);
+    const response = postData("/api/reservations", newReservation);
+    
     if (response) {
-      alert("Reservati added successfully");
+      alert("Reservation added successfully");
+      setValues(initialValues);
+
     } else {
       alert("Something went wrong!");
     }
   };
 
   return (
-    <div>
-      <label>Meal Id</label>
-      <input
-        type="text"
-        value={mealId}
-        name="mealId"
-        onChange={handleInputChange}
-      />
-      <br />
+    <div className="container">
       <label>Contact name</label>
       <input
+        className = "forminputs"
         type="text"
-        value={values.name}
-        name="name"
+        value={values.contact_name}
+        name="contact_name"
         onChange={handleInputChange}
       />
       <br />
-
       <label>Phone number</label>
       <input
+        className = "forminputs"
         type="tel"
         value={values.phoneNumber}
         name="phoneNumber"
         onChange={handleInputChange}
       />
       <br />
+      <label>Email</label>
       <input
+        className = "forminputs"
         type="email"
         value={values.email}
         name="email"
         onChange={handleInputChange}
       />
-      <br />
+      <br/>
       <label>No of guests</label>
       <input
+        className = "forminputs"
         type="number"
         value={values.no_of_guests}
         name="no_of_guests"
         onChange={handleInputChange}
       />
       <br />
-      <button type="submit" onClick={handleAddReservation}>
-        Add meal
+      <button className="submitbutton" type="submit" onClick={handleAddReservation}>
+       Submit
       </button>
     </div>
   );

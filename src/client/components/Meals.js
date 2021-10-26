@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Displaymeal from "./Displaymeal";
 
+
 const Meals = () => {
   const [meals, setMeals] = useState([]);
   const [error, setError] = useState(null);
@@ -26,14 +27,13 @@ const Meals = () => {
       });
   }, []);
   return (
-    <div>
+    <div className="display-meal">    
       <ul>
         {meals.map((meal) => {
           return (
             <Link to={`/meals/${meal.id}`}>
-              {console.log(meal.id)}
-            <li key={meal.id}>
-              <Displaymeal meal={meal}/>
+             <li key={meal.id}>               
+                <Displaymeal  meal={meal} />                
             </li>
             </Link>
           );
