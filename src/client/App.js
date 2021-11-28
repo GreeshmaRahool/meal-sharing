@@ -9,13 +9,14 @@ import Aboutus from "./components/Aboutus";
 import MealWithId from "./components/MealWithId";
 import Addmeal from "./components/AddMeal";
 
+
 function App() {
   return (
     <Router>
       <Navigation />
       <Switch>
         <Route exact path="/">
-          <Home/>
+          <Home />
         </Route>
         <Route exact path="/aboutus">
           <Aboutus/>

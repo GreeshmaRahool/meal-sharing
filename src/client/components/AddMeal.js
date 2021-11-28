@@ -45,7 +45,13 @@ export default function AddMeal() {
       created_Date: date,
     };
     //const url = "/api/meals";
-    const response = postData("/api/meals", newMeal);
+    if (newMeal === {}) {
+      alert("Please fill all fields");
+    }
+   console.log(newMeal)
+      const response = postData("/api/meals", newMeal);
+   
+  
     console.log(response)
     if (response) {
       alert('Meal added successfully')
@@ -61,7 +67,7 @@ export default function AddMeal() {
   return (
     <div className="addmealcontainer">
       <h1>Add a meal</h1>
-      <label>Title</label>
+      <label className="lbl-addmeal">Title</label>
       <input
         className="input"
         type="text"
@@ -71,7 +77,7 @@ export default function AddMeal() {
       />
       <br />
 
-      <label>Description</label>
+      <label className="lbl-addmeal">Description</label>
       <input
         className="input"
         type="text"
@@ -81,7 +87,7 @@ export default function AddMeal() {
       />
       <br />
 
-      <label>Location</label>
+      <label className="lbl-addmeal">Location</label>
       <input
         className="input"
         type="text"
@@ -90,7 +96,7 @@ export default function AddMeal() {
         onChange={handleInputChange}
       />
       <br />
-      <label>maximum reservations</label>
+      <label className="lbl-addmeal">maximum reservations</label>
       <input
         className="input"
         type="number"
@@ -100,7 +106,7 @@ export default function AddMeal() {
       />
       <br />
 
-      <label>Price</label>
+      <label className="lbl-addmeal">Price</label>
       <input
         className="input"
         type="number"
@@ -109,15 +115,17 @@ export default function AddMeal() {
         onChange={handleInputChange}
       />
       <br />
-      <label>When</label>
+      <label className="lbl-addmeal">When</label>
       <DatePicker
         className="date-picker"
         dateFormat="yyyy-MM-dd"
         selected={when}
         onChange={(date) => setWhen(date)}
         minDate={new Date()}
-      /><br/><br/>
-      <button className="submitbutton" type="submit" onClick={handleAddMeal}>Add meal</button>
+      /><br /><br />
+      
+        <button className="submitbutton" type="submit" onClick={handleAddMeal}>Add meal</button>
+      
     </div>
   );
 }

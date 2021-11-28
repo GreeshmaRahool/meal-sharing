@@ -48,6 +48,7 @@ export default function AddReservation(reservationId) {
 
   return (
     <div className="container">
+      <h4 className="heading-formbtn">Book your seat</h4>
       <label>Contact name</label>
       <input
         className = "forminputs"

@@ -41,7 +41,7 @@ function SearchMeal() {
     <div >    
       <input
         className="search-meal"
-        type="text"
+        type="search"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         placeholder="Type to search a meal"

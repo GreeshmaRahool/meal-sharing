@@ -41,6 +41,7 @@ function AddReview(mealId) {
 
   return (
     <div className="container">
+     <h4 className="heading-formbtn">Add review</h4>
       <label>Title</label>
       <input
         className = "forminputs"
