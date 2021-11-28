@@ -1,7 +1,7 @@
 import React from "react";
 
 export default async function postData(url = "", newMeal = {}) {
-  console.log(newMeal);
+  
     const response = await fetch(url, {
       method: "POST",
       mode: "cors",
@@ -15,4 +15,5 @@ export default async function postData(url = "", newMeal = {}) {
       body: JSON.stringify(newMeal),
     });
     return response.json();
+ 
 }

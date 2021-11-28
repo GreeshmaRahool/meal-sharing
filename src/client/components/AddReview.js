@@ -28,10 +28,9 @@ function AddReview(mealId) {
       meal_id: mealId.id,
       stars: values.stars,
       created_date: date,
-      };
-      console.log(newReview)
+    };
     const response = postData("/api/reviews", newReview);
-    if (response) {
+    if (response.ok) {
       alert("Review added successfully");
       setValues(initialValues);
     } else {
@@ -41,10 +40,10 @@ function AddReview(mealId) {
 
   return (
     <div className="container">
-     <h4 className="heading-formbtn">Add review</h4>
+      <h4 className="heading-formbtn">Add review</h4>
       <label>Title</label>
       <input
-        className = "forminputs"
+        className="forminputs"
         type="text"
         value={values.title}
         name="title"
@@ -53,7 +52,7 @@ function AddReview(mealId) {
       <br />
       <label>Description</label>
       <input
-        className = "forminputs"
+        className="forminputs"
         type="text"
         value={values.description}
         name="description"
@@ -62,8 +61,8 @@ function AddReview(mealId) {
       <br />
       <label>Rating</label>
       <input
-        className = "forminputs"
-        type="text"
+        className="forminputs"
+        type="Number"
         value={values.stars}
         name="stars"
         onChange={handleInputChange}

@@ -3,17 +3,21 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useState, useEffect } from "react";
 import postData from "./postData";
+import { useHistory } from 'react-router'
+
 
 export default function AddMeal() {
   // const [title, setTitle] = useState("");
   // const [description, setDescription] = useState("");
   // const [location, setLocation] = useState("");
- 
+
   // const [maxReservation, setmaxReservation] = useState("");
   // const [price, setPrice] = useState("");
   const [createdDate, setCreatedDate] = useState();
   const date = new Date().toISOString().substring(0, 10);
   const [when, setWhen] = useState(new Date());
+  const history = useHistory()
+  
 
   const initialValues = {
     title: "",
@@ -35,6 +39,7 @@ export default function AddMeal() {
   };
 
   const handleAddMeal = (e) => {
+
     const newMeal = {
       title: values.title,
       description: values.description,
@@ -44,25 +49,18 @@ export default function AddMeal() {
       price: values.price,
       created_Date: date,
     };
-    //const url = "/api/meals";
-    if (newMeal === {}) {
-      alert("Please fill all fields");
-    }
-   console.log(newMeal)
-      const response = postData("/api/meals", newMeal);
-   
-  
-    console.log(response)
+    const response = postData("/api/meals", newMeal);
     if (response) {
-      alert('Meal added successfully')
+      alert("Meal added successfully");
+      setValues(initialValues);
+      setWhen("");
+    } else {
+      alert("Something went wrong!");
       setValues(initialValues);
       setWhen("");
     }
-    else {
-      alert('Something went wrong!')
-}
+    history.go(0)
   };
-  
 
   return (
     <div className="addmealcontainer">
@@ -122,10 +120,13 @@ export default function AddMeal() {
         selected={when}
         onChange={(date) => setWhen(date)}
         minDate={new Date()}
-      /><br /><br />
-      
-        <button className="submitbutton" type="submit" onClick={handleAddMeal}>Add meal</button>
-      
+      />
+      <br />
+      <br />
+
+      <button className="submitbutton" type="submit" onClick={handleAddMeal}>
+        Add meal
+      </button>
     </div>
   );
 }
