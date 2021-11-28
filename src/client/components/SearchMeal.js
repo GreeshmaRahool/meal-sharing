@@ -31,12 +31,14 @@ function SearchMeal() {
     if (search !== "") {
       fetchMeals(`/api/meals?title=${search}`);
     }
+    else {
+      setMealItems([]);
+    }
   }, [search]);
 
+
   return (
-    <div >
-      {/* <label className="label-search">Search a meal here</label> */}
-      {loading ? <div></div> :mealItems.length === 0 ? <p className="emptymeal">No meals found</p> : ""}
+    <div >    
       <input
         className="search-meal"
         type="text"
@@ -45,18 +47,21 @@ function SearchMeal() {
         placeholder="Type to search a meal"
         name="search"
       />
-      <br/><br/>
+      <br /><br />
+      <div>
       <ul className="searchmeal-container">
-        {mealItems.map((meal) => {
+        {mealItems.map((meal , idx) => {
           return (            
             <Link to={`/meals/${meal.id}`}>
-              <li key={meal.id}>
+              <li key={idx}>
                 <Displaymeal meal={meal} />
               </li>
             </Link>
           );
         })}
-      </ul>
+        </ul>
+        </div>
+      {loading ? <div></div> : mealItems.length === 0 && search !== "" ? <div className="emptymeal">No meals found  </div>: ""}
     </div>
   );
 }

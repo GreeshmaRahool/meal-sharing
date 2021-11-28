@@ -13,9 +13,8 @@ const MealWithId = () => {
   const [reservationForm, setReservationForm] = useState(false);
   const [reviewForm, setReviewForm] = useState(false);
   const [reservation, setReservation] = useState([]);
-
   const paramMealId = useParams();
- 
+
   useEffect(() => {
     fetch(`/api/meals?availableReservations=true`)
       .then((res) => {
@@ -57,11 +56,11 @@ const MealWithId = () => {
   let getReservationWithId = reservation.filter(
     (item) => item.id == paramMealId.id
   );
-  let availableSeats = getReservationWithId.map(item => {
- return (Number(item.max_reservations)- Number(item.total_reservations))
-  })
-  console.log(getReservationWithId)
- console.log(availableSeats)
+  let availableSeats = getReservationWithId.map((item) => {
+    return Number(item.max_reservations) - Number(item.total_reservations);
+  });
+  console.log(getReservationWithId);
+  console.log(availableSeats);
 
   const handleButtonState = () => {
     if (getReservationWithId.length !== 0) {
@@ -87,8 +86,10 @@ const MealWithId = () => {
       <p>{mealWithId.title}</p>
       {mealWithId.description} <br />
       Location : {mealWithId.location} <br />
-      Price : {mealWithId.price} DKK <br /><br />
-      Available seats : {availableSeats[0]}<br/>
+      Price : {mealWithId.price} DKK <br />
+      <br />
+      Available seats : {availableSeats[0]}
+      <br />
       <div className="button-container">
         <button
           className="button-reservtn"
