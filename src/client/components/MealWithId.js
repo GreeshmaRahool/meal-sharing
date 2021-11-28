@@ -5,6 +5,7 @@ import AddReservation from "./AddReservation";
 import AddReview from "./AddReview";
 import LoadImage from "../LoadImage";
 import Displaymeal from "./Displaymeal";
+import { useHistory } from 'react-router'
 
 const MealWithId = () => {
   const [mealWithId, setMealWithId] = useState([]);
@@ -14,7 +15,7 @@ const MealWithId = () => {
   const [reviewForm, setReviewForm] = useState(false);
   const [reservation, setReservation] = useState([]);
   const paramMealId = useParams();
-
+  const history = useHistory()
   useEffect(() => {
     fetch(`/api/meals?availableReservations=true`)
       .then((res) => {
@@ -69,6 +70,11 @@ const MealWithId = () => {
   };
 
   const handleAddReservation = () => {
+    if (availableSeats[0] == null)
+    {
+      alert('No seats available')
+      history.go(0)
+      }
     setReservationForm(true);
     setReviewForm(false);
   };
@@ -88,7 +94,7 @@ const MealWithId = () => {
       Location : {mealWithId.location} <br />
       Price : {mealWithId.price} DKK <br />
       <br />
-      Available seats : {availableSeats[0]}
+      Available seats : {availableSeats[0]==null?0:availableSeats[0]}
       <br />
       <div className="button-container">
         <button
