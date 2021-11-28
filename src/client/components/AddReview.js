@@ -30,7 +30,7 @@ function AddReview(mealId) {
       created_date: date,
     };
     const response = postData("/api/reviews", newReview);
-    if (response.ok) {
+    if (response) {
       alert("Review added successfully");
       setValues(initialValues);
     } else {
