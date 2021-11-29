@@ -1,3 +1,254 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
+}
+.meal-logo {
+  width: 4em;
+  height: 4em;
+  border: 5px solid rgb(255, 255, 255);
+  border-radius: 10px;
+}
+.bg-cover {
+  background-size: cover;
+
+  width: 100%;
+  height: 100%;
+}
+
+.nav ul {
+  width: 500px;
+  display: flex;
+  justify-content: space-evenly;
+  margin-left: 600px;
+  margin-top: 30px;
+}
+.nav ul li {
+  color: rgb(0, 0, 0);
+  font-size: x-large;
+  font-weight: bold;
+}
+
+
+.nav-logo {
+  display: flex;
+}
+h1 {
+  padding-top: 8px;
+  text-align: center;
+}
+h3 {
+  padding-top: 130px;
+  text-align: left;
+  font-style: italic;
+  font-weight: lighter;
+  font-family: monospace;
+  margin-left: 5px;
+}
+.text-fontcolor {
+  color: rgb(255, 255, 255);
+}
+
+.search-meal {
+  
+  width: 550px;
+  height: 65px;
+  margin-left: 900px;
+  font-size: larger;
+}
+.search-container {
+  margin-top: 10px;
+  /* border: 2px solid rgb(216, 233, 68); */
+  width: 1200px;
+  height: 270px;
+}
+.header {
+  height: 80px;
+  margin-top: -25px;
+  /* border: 2px solid rgb(27, 7, 209); */
+}
+.footer {
+  height: 100px;
+  color: black;
+  margin-top: 350px;
+  font-style: oblique;
+  background-color: lightgray;
+  /* border: 2px solid rgb(226, 152, 152); */
+}
+.para-footer {
+  float: left;
+  margin-left: 20px;
+  font-weight: normal;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: medium;
+  color: black;
+}
+.createdby {
+  float: right;
+  margin-right: 20px;
+  font-weight: normal;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: medium;
+  color: black;
+}
+/*About*/
+.image-about {
+  width: 50%;
+  height: 50%;
+  margin-left: 20px;
+}
+/*meals*/
+.display-meal {
+  background-color: rgb(138, 64, 105);
+  padding-bottom: 2%;
+}
+.load-mealImage {
+  width: 250px;
+  height: 250px;
+  margin: 10px;
+  margin-bottom: 30px;
+  color: rgb(255, 255, 255);
+}
+.display-meal ul {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding-right: 140px;
+  margin: 30px;
+  
+}
+.display-meal ul li {
+  margin-bottom: 60px;
+  font-size: larger;
+  font-weight: bolder;
+}
+.meal-image {
+  width: 240px;
+  height: 240px;
+}
+/*MealWithId*/
+.mealwithid-container {
+  margin-left: 500px;
+  margin-top: 20px;
+  height: 600px;
+  align-content: center;
+  text-align: center;
+  background-color: rgb(233, 215, 215);
+  color: rgb(8, 8, 8);
+  width: 50%;
+  /* border: solid 2px red; */
+}
+.button-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content:center;
+  width: 500px;
+  height: 80px;
+  margin-left: 200px;
+
+
+  
+}
+.button-reservtn{
+  margin-top: 10px;
+  width: 200px;
+  height: 50px;
+  margin-left : 70px;
+  background-color: rgb(100, 12, 100);
+  
+
+}
+.button-review{
+  margin-top : 10px;
+  margin-left : 30px;
+  width: 200px;
+  height: 50px;
+  background-color: rgb(100, 12, 100);
+}
+.meal-image{
+  margin-top: 20px;
+}
+.container{
+  /* border: solid 2px red;
+  margin-left: 800px;
+  */
+  /* width:300px; */
+  width: 30%;
+  height: 60%;
+  background-color: rgb(202, 186, 199);
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom:450px;
+  margin-left:1000px ;
+}
+.submitbutton{
+  font-weight: bolder;
+  width: 180px;
+  height: 50px;
+  color: rgb(255, 255, 255);
+  background-color: rgb(100, 12, 100);
+  margin-bottom: 2%;
+  font-size: larger;
+}
+.addmealcontainer{
+  width: 50%;
+  height: 90%;
+  display: flex;
+  background-color: rgb(233, 215, 215);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: rgb(0, 0, 0);
+  margin-left: 400px;
+  font-size:la ;
+  border: 2px solid red;
+}
+.input{
+  height: 60px;
+  width: 320px;
+  font-size: larger;
+ 
+}
+.lbl-addmeal{
+  font-size: larger;
+}
+.date-picker{
+margin-left: 30%;
+width: 320px;
+height: 45px;
+font-size: larger;
+}
+.searchmeal-container {
+  width: 90%;
+  height: 100%;
+  display: flex;
+  position: fixed;
+  font-weight: bolder;
+  margin-right: 20px;
+ 
+}
+.searchmeal-container{
+  color: blue;
+}
+.emptymeal{
+  margin-left:900px;
+  font-weight: bolder;
+  font-size: larger;
+}
+.emptyres{
+float: right;
+}
+.forminputs{
+  width: 280px;
+  height: 30px;
+}
+.heading-formbtn{
+  font-size: larger;
 }
